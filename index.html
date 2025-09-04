@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-T">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Projetos - LiVe Consultoria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CORE BRAND IDENTITY --- */
+        :root {
+            --azul-petroleo: #06192a;
+            --azul-card: #0A243D;
+            --verde-vibrante: #00e800;
+            --cinza-claro: #f4f4f4;
+            --cinza-texto: #a0aecd;
+            --vermelho-atraso: #F44336;
+        }
+
+        /* --- BASE STYLES & TYPOGRAPHY --- */
+        body {
+            background-color: var(--azul-petroleo);
+            color: var(--cinza-claro);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* --- HEADER --- */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            color: var(--verde-vibrante);
+            font-size: 2.5rem;
+            text-shadow: 0 0 8px rgba(0, 232, 0, 0.7);
+            margin: 0;
+        }
+        
+        .header p {
+            color: var(--cinza-texto);
+            font-size: 1.1rem;
+        }
+        
+        /* --- TABS NAVIGATION --- */
+        .tab-navigation {
+            overflow: hidden;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tab-navigation button {
+            background-color: var(--azul-card);
+            border: 1px solid rgba(0, 232, 0, 0.2);
+            color: var(--cinza-texto);
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+
+        .tab-navigation button:hover {
+            background-color: rgba(0, 232, 0, 0.1);
+            color: var(--verde-vibrante);
+        }
+
+        .tab-navigation button.active {
+            background-color: var(--verde-vibrante);
+            color: var(--azul-petroleo);
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(0, 232, 0, 0.5);
+        }
+
+        /* --- TAB CONTENT & CLIENT CARD --- */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .client-card {
+            background-color: var(--azul-card);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 232, 0, 0.1);
+        }
+
+        .client-card h2 {
+            color: var(--verde-vibrante);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--verde-vibrante);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .update-date {
+            font-size: 0.8rem;
+            color: var(--cinza-texto);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .client-card h3 {
+            color: var(--cinza-claro);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .status-entregas ul {
+            list-style: none;
+            padding: 0;
+            font-family: 'Merriweather', serif;
+        }
+
+        .status-entregas li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+            color: var(--cinza-texto);
+        }
+
+        .status-entregas strong {
+            color: var(--cinza-claro);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .status-entregas .sub-list {
+            list-style-type: '– ';
+            padding-left: 20px;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .plano-de-acao-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .plano-de-acao-table th,
+        .plano-de-acao-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(244, 244, 244, 0.1);
+        }
+
+        .plano-de-acao-table th {
+            color: var(--cinza-claro);
+            font-weight: 600;
+        }
+        
+        .plano-de-acao-table td {
+            color: var(--cinza-texto);
+        }
+
+        .status-cell {
+            width: 140px;
+            font-weight: 600;
+            text-align: center !important;
+        }
+
+        .status-concluida { color: var(--verde-vibrante); }
+        .status-em-andamento { color: #FFC107; } /* Amarelo */
+        .status-atrasada { color: var(--vermelho-atraso); }
+        .status-pendente { color: var(--cinza-texto); }
+        .status-icon { margin-right: 0.5rem; }
+        .no-info { font-style: italic; color: var(--cinza-texto); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard de Acompanhamento de Projetos</h1>
+            <p>Status consolidado dos clientes da LiVe Consultoria</p>
+        </div>
+
+        <!-- Abas de Navegação -->
+        <div class="tab-navigation">
+            <button class="tab-button" onclick="openClient(event, 'CasasGoianita')" id="defaultOpen">Casas Goianita</button>
+            <button class="tab-button" onclick="openClient(event, 'CasaDibs')">Casa Dibs</button>
+            <button class="tab-button" onclick="openClient(event, 'Uzio')">Uzio</button>
+            <button class="tab-button" onclick="openClient(event, 'VisanMedica')">Visan Médica</button>
+            <button class="tab-button" onclick="openClient(event, 'GSCelulares')">GS Celulares</button>
+            <button class="tab-button" onclick="openClient(event, 'PLUR')">PLUR</button>
+            <button class="tab-button" onclick="openClient(event, 'Pneucar')">Pneucar</button>
+            <button class="tab-button" onclick="openClient(event, 'IMOL')">IMOL</button>
+            <button class="tab-button" onclick="openClient(event, 'Okamoto')">Okamoto</button>
+            <button class="tab-button" onclick="openClient(event, 'Melt')">Melt</button>
+            <button class="tab-button" onclick="openClient(event, 'TecnoIT')">Tecno IT</button>
+            <button class="tab-button" onclick="openClient(event, 'EcossistemaLive')">Ecossistema Live</button>
+            <button class="tab-button" onclick="openClient(event, 'FormacaoLideranca')">Formação Liderança</button>
+        </div>
+
+        <!-- Conteúdo das Abas -->
+        <div id="CasasGoianita" class="tab-content">
+             <div class="client-card">
+                <h2>Casas Goianita</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Status Detalhado do Projeto</h3>
+                    <ul>
+                        <li><strong>1. O que já foi feito (Atividades Concluídas)</strong>
+                            <ul class="sub-list">
+                                <li><strong>Diagnóstico Financeiro Preliminar:</strong> Levantamento inicial de escriturações e balanços concluiu que os dados existentes não são confiáveis para a tomada de decisão estratégica.</li>
+                                <li><strong>Apuração Detalhada das Informações:</strong> Mateus (contador) conduziu um acompanhamento minucioso com a gestão atual, identificando falhas de controle e gestão que persistem desde 2020.</li>
+                            </ul>
+                        </li>
+                        <li><strong>2. O que está em andamento (Atividades em Execução)</strong>
+                             <ul class="sub-list">
+                                 <li><strong>Consolidação Financeira (Responsável: Mateus):</strong> Elaboração de relatório cruzando dados gerenciais com extratos bancários. Prazo: Sexta-feira.</li>
+                                 <li><strong>Análise de Fornecedores (Responsável: Carlos Filho):</strong> Mapeamento de fornecedores estratégicos. Prazo: Hoje.</li>
+                                 <li><strong>Mapeamento do Ecossistema de Influência (Responsáveis: Silvana e Cláudia):</strong> Levantamento de potenciais embaixadores e parceiros de eventos. Prazo: Hoje.</li>
+                                 <li><strong>Auditoria de Marketing (Responsável: Agência):</strong> Listagem e análise de performance de ações de marketing. Prazo: Sexta-feira.</li>
+                                 <li><strong>Análise Jurídica da RJ (Responsável: Danilo):</strong> Análise do processo para preparar a substituição do Administrador Judicial (AJ). Prazo: Sexta-feira.</li>
+                             </ul>
+                        </li>
+                         <li><strong>3. O que deve ser feito (Próximos Passos)</strong>
+                             <ul class="sub-list">
+                                 <li><strong>Fase de Alinhamento (Imediato):</strong> Consultoria receberá os levantamentos e realizará reuniões rápidas para definir ações prioritárias de faturamento.</li>
+                                 <li><strong>Ações Emergenciais:</strong> Ingressar com pedido de substituição do AJ, realizar auditoria completa de estoque e aprofundar a auditoria financeira.</li>
+                                 <li><strong>Fase Estratégica:</strong> Aplicar pesquisa de clima, desenvolver plano de viabilidade para as lojas, iniciar o planejamento estratégico 2026 e o plano de reposicionamento de marca e reestruturação interna.</li>
+                             </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação (Entregáveis Macro)</h3>
+                    <table class="plano-de-acao-table">
+                         <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Desenvolvimento de um Plano de Sucessão formal.</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>08/09/2025</td><td>Elaboração de um Acordo Societário (Protocolo de Família).</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Formação de um Conselho Consultivo com membros independentes.</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>22/09/2025</td><td>Realização de auditorias completas de inventário, finanças e passivos.</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>06/10/2025</td><td>Estruturação da área financeira para relatórios confiáveis (DRE, DFC).</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>13/10/2025</td><td>Mapeamento e redesenho de processos-chave (AS-IS vs. TO-BE).</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>27/10/2025</td><td>Planejamento e suporte na implantação de um novo ERP.</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>24/11/2025</td><td>Criação de novo posicionamento de marca e identidade visual.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="CasaDibs" class="tab-content">
+            <div class="client-card">
+                <h2>Casa Dibs</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Status Detalhado do Projeto</h3>
+                    <ul>
+                         <li><strong>Frente 1: Governança e Estratégia</strong>
+                            <ul class="sub-list">
+                                <li><strong>Conselho Gestor:</strong> Pré-reunião de alinhamento realizada com sucesso. Próximo passo é formalizar o conselho e estabelecer uma agenda fixa de reuniões.</li>
+                                <li><strong>Planejamento Estratégico 2026:</strong> Ação definida para iniciar o planejamento de expansão.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Frente 2: Oportunidade de Expansão B2B (Parceria com Frigorífico Qualiboi)</strong>
+                             <ul class="sub-list">
+                                 <li><strong>Objetivo:</strong> Utilizar a estrutura e o Selo SIE da Qualiboi para expandir as vendas B2B em 30-45 dias, superando a barreira regulatória.</li>
+                                 <li><strong>Status:</strong> Visita técnica realizada com grande interesse de ambas as partes. Aguardando informações da Qualiboi para modelagem do negócio.</li>
+                                  <li><strong>Risco Principal:</strong> Necessidade de um giro muito rápido de capital para cobrir o custo inicial dos insumos.</li>
+                             </ul>
+                        </li>
+                         <li><strong>Frente 3: Reestruturação Organizacional e Otimização</strong>
+                             <ul class="sub-list">
+                                 <li><strong>Estrutura de Pessoal:</strong> Proposta de reestruturação do organograma e escalas de trabalho para otimizar custos e reduzir riscos. Nova escala entra em vigor no domingo.</li>
+                                 <li><strong>Gestão de Pessoas:</strong> Processos de realocação e desligamentos em andamento. Negociação para realocação da funcionária Lucélia para a área de eventos continua.</li>
+                                 <li><strong>Desenvolvimento de Novos Negócios:</strong> Estruturação da área de Eventos, que já mostra resultados promissores, e ampliação da Rotisseria para capitalizar a alta margem de produtos-chave.</li>
+                             </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação (Entregáveis Macro)</h3>
+                     <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>29/08/2025</td><td>Diagnóstico e Reestruturação Organizacional</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Implementação de Controles Gerenciais (ERP, estoque, dashboards)</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>30/09/2025</td><td>Padronização Operacional (Criação de fichas técnicas e manuais)</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Planejamento Estratégico Completo (metas SMART)</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>30/10/2025</td><td>Desenvolvimento de Novos Canais (delivery, fidelização)</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/11/2025</td><td>Otimização e Crescimento Sustentável (layouts, acompanhamento)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="Uzio" class="tab-content">
+            <div class="client-card">
+                <h2>Uzio</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <ul>
+                        <li><strong>Consultor(es) Responsável(is):</strong> Luiz Portal (Estratégia & Liderança), Daniel Bueno (Execução & Treinamento Tático).</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Reestruturação da área comercial e dos processos de produção para aumentar a lucratividade e a recorrência de vendas, focando na qualificação da carteira, otimização de processos e expansão para novos nichos.</li>
+                        <li><strong>2. Situação Atual e Próximos Passos:</strong>
+                            <ul class="sub-list">
+                                <li><strong>Status:</strong> Proposta aprovada. Contrato em formalização.</li>
+                                <li><strong>Atividades Realizadas:</strong> Reunião de Diagnóstico com gerente comercial; Levantamento inicial de necessidades; Prospecção de 11 currículos para vaga de vendedor.</li>
+                                <li><strong>Atividades em Andamento:</strong>
+                                    <ul class="sub-list">
+                                        <li>Daniel buscando a API do sistema para desenvolvimento de BI.</li>
+                                        <li>Marcação de entrevistas com os 4 candidatos finalistas.</li>
+                                    </ul>
+                                </li>
+                                 <li><strong>Próximos Passos (Pós-Contrato):</strong>
+                                    <ul class="sub-list">
+                                        <li>Estruturação da agenda semanal de dedicação ao projeto.</li>
+                                        <li>Reunião estratégica com a empresa de RH (Evolutos).</li>
+                                        <li>Análise da pesquisa de clima organizacional.</li>
+                                        <li>Desenvolvimento da primeira versão do planejamento macro.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                    <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Frente</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Estratégica</td><td>30/09/2025</td><td>Desenho do processo comercial em fluxograma</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Estratégica</td><td>30/09/2025</td><td>Treinamento de líderes comerciais em Liderança e Indicadores</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Estratégica</td><td>30/09/2025</td><td>Planejamento de novos canais de venda (Marketplace/Varejo)</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>30/09/2025</td><td>Mapeamento do processo comercial</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>31/10/2025</td><td>Treinamentos de prospecção e vendas de alto impacto</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>30/11/2025</td><td>Acompanhamento prático da equipe de vendas</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>31/03/2026</td><td>Elaboração do Ramp-up de Treinamento e Playbook de Vendas</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div id="VisanMedica" class="tab-content">
+             <div class="client-card">
+                <h2>Visan Médica</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <ul>
+                        <li><strong>Consultor(es) Responsável(is):</strong> Cléber Donato.</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Consultoria tática para a organização e estruturação de processos da Visanmédica, com foco em resolver gargalos operacionais, financeiros e de qualidade, além de redefinir a estrutura organizacional para maior clareza e eficiência.</li>
+                        <li><strong>2. Diagnóstico e Desafios Chave:</strong> Gargalo Crítico (Finanças, Qualidade, Documentação), Subutilização de Sistemas, Falta de clareza nos papéis.</li>
+                        <li><strong>3. Cronograma e Prazos:</strong> Duração de 3 meses (05/08/2025 a 05/11/2025).</li>
+                        <li><strong>4. Situação Atual e Próximos Passos:</strong> Projeto em andamento (Fase de Implementação). Fase de diagnóstico e desenho de soluções concluída. Próximo passo é executar os planos de ação detalhados.</li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                     <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Reestruturação Interna</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual de Processos Operacionais</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual Ecommerce</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Página de Afiliados - Visan Online</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Automação do Pós-Venda</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Reestruturação Organizacional</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Desenho do Novo Processo de Locação</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Política do Programa de Afiliados</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual de Produtos Micromed</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Base de Conhecimento Centralizada</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Adaptação de Templates no LocApp</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Processo de Atendimento de Leads</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano Estratégico - Bioengine</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Formulário de Requisitos de Sistemas</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Ação - Visan Online</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Ação Geral - Visan Médica</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual de Devolução de Vendas Online</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Modelo de Requisição de Compra</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Treinamento Módulo Financeiro LocApp</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Checklist de Documentos da Qualidade</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="GSCelulares" class="tab-content">
+            <div class="client-card">
+                <h2>GS Celulares</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <ul>
+                        <li><strong>Consultor(es) Responsável(is):</strong> Luiz Portal.</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Estruturar a organização para suportar um crescimento robusto e sustentável, focando na construção de pilares de governança e escalabilidade.</li>
+                        <li><strong>2. Diagnóstico e Desafios Chave:</strong> Ausência de processos mapeados, fusão entre finanças pessoais e empresariais, área comercial operando sem método claro.</li>
+                        <li><strong>3. Plano de Ação Estruturado:</strong> Dividido em 3 fases: Fundamentação (4 sem), Desenho (8 sem) e Implementação (12 sem).</li>
+                        <li><strong>4. Situação Atual e Próximos Passos:</strong> Proposta apresentada. Aguardando aprovação para iniciar a Fase 1.</li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                    <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Relatório de Auditoria Financeira</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Mapeamento de Processos (AS-IS e TO-BE)</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Estruturação de Fluxo de Caixa e Controles Financeiros</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Implementação da separação de contas PF e PJ</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/11/2025</td><td>Documento de Planejamento Estratégico Completo</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/02/2026</td><td>Elaboração do Playbook Comercial</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="PLUR" class="tab-content">
+            <div class="client-card">
+                <h2>PLUR Movimento</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <ul>
+                        <li><strong>Consultor(es) Responsável(is):</strong> Luiz Portal.</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Estruturar a transformação da PLUR em um ecossistema completo de movimento, visando a captação de investimento para expansão (Fase 1) e aceleração do crescimento (Fase 2).</li>
+                        <li><strong>2. Diagnóstico e Desafios Chave:</strong>
+                             <ul class="sub-list">
+                                 <li><strong>Fase 1 (Captação):</strong> Necessidade de formalização e capital para expansão física. Valuation líquido de R$ 430.928,06.</li>
+                                 <li><strong>Fase 2 (Crescimento):</strong> Pilares de suporte (Finanças, Vendas) reativos e desestruturados.</li>
+                            </ul>
+                        </li>
+                        <li><strong>3. Situação Atual e Próximos Passos:</strong>
+                             <ul class="sub-list">
+                                 <li><strong>Status:</strong> Fase 1 (Captação) concluída. Plano de Ação da Fase 2 elaborado.</li>
+                                 <li><strong>Próximos Passos:</strong> Aguardando a captação de recursos para iniciar as ações da Fase 2.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação (Fase 2)</h3>
+                     <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/08/2025</td><td>Criação da Política Comercial da PLUR</td></tr>
+                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Estruturação do Portfólio de Produtos</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Mapeamento de Canais de Aquisição de Marketing</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Coleta e distribuição de depoimentos de alunos</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Implementação de Assistente de IA para Vendas e Retenção</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/11/2025</td><td>Análise da Estrutura de Preços</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/11/2025</td><td>Planejamento do Fluxo de Caixa</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="Pneucar" class="tab-content">
+            <div class="client-card">
+                <h2>Pneucar</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                     <ul>
+                        <li><strong>Consultor(es) Responsável(is):</strong> Luiz Portal, Cléber Donato.</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Estruturação e aumento da eficiência operacional da empresa em três fases: Estruturação (AS-IS), Modelagem (TO-BE) e Implementação.</li>
+                        <li><strong>2. Diagnóstico e Desafios Chave:</strong> Necessidade de organizar a base da operação, mapear processos e mitigar riscos antes da expansão.</li>
+                        <li><strong>3. Plano de Ação Estruturado (Fase 1):</strong> Foco em Business Model Canvas, mapeamento da jornada do cliente, organograma, 5S e Gestão à Vista.</li>
+                        <li><strong>4. Situação Atual e Próximos Passos:</strong> Projeto em Fase 1 de Execução. Aguardando insumos do cliente (Marcell) para avançar.</li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                     <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>29/08/2025</td><td>Construção do Business Model Canvas</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>05/09/2025</td><td>Entrega de Áudios de Mapeamento de Processos</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>12/09/2025</td><td>Desenho do Organograma da Empresa</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>19/09/2025</td><td>Revisão do Plano de Cargos e Salários</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>19/09/2025</td><td>Extração de Relatórios do Sistema (curva ABC)</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>19/09/2025</td><td>Implementação do Programa 5S</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="IMOL" class="tab-content">
+            <div class="client-card">
+                <h2>IMOL</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <ul>
+                        <li><strong>Consultor(es) Responsável(is):</strong> Luiz Portal.</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Mentoria de Liderança de Alta Performance para 6 líderes, visando amadurecer competências comportamentais.</li>
+                        <li><strong>2. Diagnóstico e Desafios Chave:</strong> Líderes com lacunas em habilidades como gestão de conflitos e postura executiva.</li>
+                        <li><strong>3. Plano de Ação Estruturado:</strong> Mentoria em grupo com duração de 6 meses, dividida em duas fases (Fundamentos e Performance).</li>
+                        <li><strong>4. Situação Atual e Próximos Passos:</strong> Proposta apresentada. Aguardando aprovação para iniciar o projeto.</li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                    <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                             <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Sessões 1-2: Autoconhecimento e Autoconfiança</td></tr>
+                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Sessão 3: Comunicação Assertiva e Feedback</td></tr>
+                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Sessões 4-5: Gestão de Conflitos (Diagnóstico e Resolução)</td></tr>
+                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Sessão 6: Inteligência Emocional Aplicada</td></tr>
+                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/11/2025</td><td>Sessões 7-8: Gestão de Demandas Urgentes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="EcossistemaLive" class="tab-content">
+            <div class="client-card">
+                <h2>Ecossistema Live</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                     <h3>Resumo e Status Atual</h3>
+                     <ul>
+                        <li><strong>Responsável:</strong> Luiz Portal.</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Desenvolver a arquitetura completa para a fundação, gestão e expansão do Ecossistema LiVe como uma plataforma de desenvolvimento de liderança.</li>
+                        <li><strong>2. Diagnóstico e Desafios Chave:</strong> Criar alta barreira de entrada através de comunidade, tecnologia e proteção de propriedade intelectual.</li>
+                        <li><strong>3. Situação Atual e Próximos Passos:</strong> Projeto estratégico interno em andamento contínuo. Execução paralela dos 10 pilares de desenvolvimento.</li>
+                     </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                     <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Definição da Identidade e Missão</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Propostas de Valor (Pilares de Comunicação)</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Estrutura do Ecossistema (Jornada do Cliente CEO)</td></tr>
+                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Portfólio de Produtos e Serviços</td></tr>
+                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Escalar o programa de Conselheiros.</td></tr>
+                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Lançar cursos de especialistas.</td></tr>
+                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Expandir formações In-Company.</td></tr>
+                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Implementar automação para qualificação de leads.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="FormacaoLideranca" class="tab-content">
+            <div class="client-card">
+                <h2>Formação Liderança Antifrágil</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <ul>
+                        <li><strong>Status:</strong> Projeto em andamento.</li>
+                        <li><strong>Resumo:</strong> Após três turmas de formação, o projeto está na fase de estruturação da área comercial.</li>
+                        <li><strong>Responsável Comercial:</strong> Daniel.</li>
+                        <li><strong>Próximos Passos:</strong> Estruturar a equipe de prospecção e definir as estratégias para captar alunos para as próximas turmas.</li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                     <table class="plano-de-acao-table">
+                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Definir Estratégia Comercial</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Contratar Equipe de Prospecção</td></tr>
+                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Lançar Campanha para Turma 4</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="Okamoto" class="tab-content">
+            <div class="client-card">
+                <h2>Okamoto</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <ul>
+                        <li><strong>Consultor(es) Responsável(is):</strong> Luiz Portal.</li>
+                        <li><strong>1. Resumo Estratégico do Projeto:</strong> Mentoria para o desenvolvimento de um plano de carreira e sucessão, com foco na preparação da próxima geração de líderes da empresa.</li>
+                        <li><strong>2. Diagnóstico e Desafios Chave:</strong> Risco de perda de talentos-chave, falta de clareza nas oportunidades de crescimento interno e necessidade de um processo estruturado para a transição de liderança.</li>
+                        <li><strong>3. Plano de Ação Estruturado:</strong> O projeto é dividido em quatro fases: Diagnóstico, Desenho do Plano, Implementação e Acompanhamento.</li>
+                        <li><strong>4. Situação Atual e Próximos Passos:</strong> Proposta apresentada. Aguardando aprovação para iniciar o projeto.</li>
+                    </ul>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                    <p class="no-info">Aguardando aprovação do projeto para detalhar o plano de ação.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="Melt" class="tab-content">
+            <div class="client-card">
+                <h2>Melt</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <p class="no-info">Nenhuma informação detalhada fornecida ainda.</p>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                    <p class="no-info">Aguardando definição do escopo do projeto.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="TecnoIT" class="tab-content">
+            <div class="client-card">
+                <h2>Tecno IT</h2>
+                <p class="update-date">Última atualização: 04 de Setembro de 2025</p>
+                <div class="status-entregas">
+                    <h3>Resumo e Status Atual</h3>
+                    <p class="no-info">Nenhuma informação detalhada fornecida ainda.</p>
+                </div>
+                <div class="plano-de-acao">
+                    <h3>Plano de Ação</h3>
+                    <p class="no-info">Aguardando definição do escopo do projeto.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openClient(evt, clientName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(clientName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Abre a primeira aba por padrão
+            document.getElementById("defaultOpen").click();
+        });
+    </script>
+
+</body>
+</html>
+
