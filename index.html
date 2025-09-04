@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-T">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Projetos - LiVe Consultoria</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -172,6 +172,7 @@
         
         .plano-de-acao-table td {
             color: var(--cinza-texto);
+            color: #ffffff;
         }
 
         .status-cell {
@@ -248,16 +249,23 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação (Entregáveis Macro)</h3>
                     <table class="plano-de-acao-table">
-                         <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Desenvolvimento de um Plano de Sucessão formal.</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>08/09/2025</td><td>Elaboração de um Acordo Societário (Protocolo de Família).</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Formação de um Conselho Consultivo com membros independentes.</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>22/09/2025</td><td>Realização de auditorias completas de inventário, finanças e passivos.</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>06/10/2025</td><td>Estruturação da área financeira para relatórios confiáveis (DRE, DFC).</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>13/10/2025</td><td>Mapeamento e redesenho de processos-chave (AS-IS vs. TO-BE).</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>27/10/2025</td><td>Planejamento e suporte na implantação de um novo ERP.</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>24/11/2025</td><td>Criação de novo posicionamento de marca e identidade visual.</td></tr>
+                            <tr><td>Plano de Sucessão</td><td>Desenvolvimento de um Plano de Sucessão formal.</td><td>01/09/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
+                            <tr><td>Acordo Societário</td><td>Elaboração de um Acordo Societário (Protocolo de Família).</td><td>08/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Conselho Consultivo</td><td>Formação de um Conselho Consultivo com membros independentes.</td><td>15/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Auditorias Completas</td><td>Realização de auditorias de inventário, finanças e passivos.</td><td>22/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Estruturação Financeira</td><td>Estruturação da área financeira para relatórios confiáveis (DRE, DFC).</td><td>06/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Mapeamento de Processos</td><td>Mapeamento e redesenho de processos-chave (AS-IS vs. TO-BE).</td><td>13/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Implantação de ERP</td><td>Planejamento e suporte na implantação de um novo ERP.</td><td>27/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Reposicionamento de Marca</td><td>Criação de novo posicionamento de marca e identidade visual.</td><td>24/11/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -273,8 +281,7 @@
                     <ul>
                          <li><strong>Frente 1: Governança e Estratégia</strong>
                             <ul class="sub-list">
-                                <li><strong>Conselho Gestor:</strong> Pré-reunião de alinhamento realizada com sucesso. Próximo passo é formalizar o conselho e estabelecer uma agenda fixa de reuniões.</li>
-                                <li><strong>Planejamento Estratégico 2026:</strong> Ação definida para iniciar o planejamento de expansão.</li>
+                                <li><strong>Conselho Gestor:</strong> Pré-reunião de alinhamento realizada com sucesso. Próximo passo é formalizar o conselho, estabelecer uma agenda fixa de reuniões e iniciar o Planejamento Estratégico 2026.</li>
                             </ul>
                         </li>
                         <li><strong>Frente 2: Oportunidade de Expansão B2B (Parceria com Frigorífico Qualiboi)</strong>
@@ -296,14 +303,21 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação (Entregáveis Macro)</h3>
                      <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>29/08/2025</td><td>Diagnóstico e Reestruturação Organizacional</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Implementação de Controles Gerenciais (ERP, estoque, dashboards)</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>30/09/2025</td><td>Padronização Operacional (Criação de fichas técnicas e manuais)</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Planejamento Estratégico Completo (metas SMART)</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>30/10/2025</td><td>Desenvolvimento de Novos Canais (delivery, fidelização)</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/11/2025</td><td>Otimização e Crescimento Sustentável (layouts, acompanhamento)</td></tr>
+                            <tr><td>Diagnóstico Inicial</td><td>Diagnóstico e Reestruturação Organizacional</td><td>29/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Controles Gerenciais</td><td>Implementação de Controles (ERP, estoque, dashboards)</td><td>15/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Padronização Operacional</td><td>Criação de fichas técnicas e manuais</td><td>30/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Planejamento Estratégico</td><td>Planejamento Completo (36 meses, metas SMART)</td><td>15/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Novos Canais</td><td>Desenvolvimento de Novos Canais (delivery, fidelização)</td><td>30/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Otimização Contínua</td><td>Otimização e Crescimento Sustentável (layouts, acompanhamento)</td><td>15/11/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -344,15 +358,22 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação</h3>
                     <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Frente</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Estratégica</td><td>30/09/2025</td><td>Desenho do processo comercial em fluxograma</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Estratégica</td><td>30/09/2025</td><td>Treinamento de líderes comerciais em Liderança e Indicadores</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Estratégica</td><td>30/09/2025</td><td>Planejamento de novos canais de venda (Marketplace/Varejo)</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>30/09/2025</td><td>Mapeamento do processo comercial</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>31/10/2025</td><td>Treinamentos de prospecção e vendas de alto impacto</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>30/11/2025</td><td>Acompanhamento prático da equipe de vendas</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>Tática</td><td>31/03/2026</td><td>Elaboração do Ramp-up de Treinamento e Playbook de Vendas</td></tr>
+                            <tr><td>Processo Comercial</td><td>Frente Estratégica: Desenho do processo comercial em fluxograma</td><td>30/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Treinamento de Líderes</td><td>Frente Estratégica: Treinamento de líderes comerciais em Liderança e Indicadores</td><td>30/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Novos Canais</td><td>Frente Estratégica: Planejamento de novos canais de venda (Marketplace/Varejo)</td><td>30/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Mapeamento Tático</td><td>Frente Tática: Mapeamento do processo comercial</td><td>30/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Treinamento de Vendas</td><td>Frente Tática: Treinamentos de prospecção e vendas de alto impacto</td><td>31/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Acompanhamento Prático</td><td>Frente Tática: Acompanhamento prático da equipe de vendas</td><td>30/11/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Playbook de Vendas</td><td>Frente Tática: Elaboração do Ramp-up de Treinamento e Playbook de Vendas</td><td>31/03/2026</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -376,28 +397,22 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação</h3>
                      <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Reestruturação Interna</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual de Processos Operacionais</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual Ecommerce</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Página de Afiliados - Visan Online</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Automação do Pós-Venda</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Reestruturação Organizacional</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Desenho do Novo Processo de Locação</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Política do Programa de Afiliados</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual de Produtos Micromed</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Base de Conhecimento Centralizada</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Adaptação de Templates no LocApp</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Processo de Atendimento de Leads</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano Estratégico - Bioengine</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Formulário de Requisitos de Sistemas</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Ação - Visan Online</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Plano de Ação Geral - Visan Médica</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Manual de Devolução de Vendas Online</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Modelo de Requisição de Compra</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Treinamento Módulo Financeiro LocApp</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>15/08/2025</td><td>Checklist de Documentos da Qualidade</td></tr>
+                            <tr><td>Reestruturação Interna</td><td>Plano de Reestruturação Interna</td><td>15/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Manuais de Processos</td><td>Manual de Processos Operacionais e Ecommerce</td><td>15/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Programa de Afiliados</td><td>Página e Política do Programa de Afiliados - Visan Online</td><td>15/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Automação Pós-Venda</td><td>Plano de Automação do Pós-Venda</td><td>15/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Base de Conhecimento</td><td>Base de Conhecimento Centralizada</td><td>15/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Planos de Ação</td><td>Plano de Ação - Visan Online e Geral</td><td>15/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Templates e Formulários</td><td>Adaptação de Templates no LocApp e Formulário de Requisitos</td><td>15/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -421,14 +436,21 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação</h3>
                     <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Relatório de Auditoria Financeira</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Mapeamento de Processos (AS-IS e TO-BE)</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Estruturação de Fluxo de Caixa e Controles Financeiros</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Implementação da separação de contas PF e PJ</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/11/2025</td><td>Documento de Planejamento Estratégico Completo</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/02/2026</td><td>Elaboração do Playbook Comercial</td></tr>
+                            <tr><td>Auditoria Financeira</td><td>Relatório de Auditoria Financeira</td><td>01/09/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
+                            <tr><td>Mapeamento de Processos</td><td>Mapeamento de Processos (AS-IS e TO-BE)</td><td>15/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Controles Financeiros</td><td>Estruturação de Fluxo de Caixa e Controles Financeiros</td><td>01/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Separação de Contas</td><td>Implementação da separação de contas PF e PJ</td><td>15/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Planejamento Estratégico</td><td>Documento de Planejamento Estratégico Completo</td><td>01/11/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Playbook Comercial</td><td>Elaboração do Playbook Comercial</td><td>15/02/2026</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -461,15 +483,22 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação (Fase 2)</h3>
                      <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/08/2025</td><td>Criação da Política Comercial da PLUR</td></tr>
-                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Estruturação do Portfólio de Produtos</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Mapeamento de Canais de Aquisição de Marketing</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Coleta e distribuição de depoimentos de alunos</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Implementação de Assistente de IA para Vendas e Retenção</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/11/2025</td><td>Análise da Estrutura de Preços</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/11/2025</td><td>Planejamento do Fluxo de Caixa</td></tr>
+                            <tr><td>Política Comercial</td><td>Criação da Política Comercial da PLUR</td><td>01/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Portfólio de Produtos</td><td>Estruturação do Portfólio de Produtos</td><td>01/09/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
+                            <tr><td>Canais de Aquisição</td><td>Mapeamento de Canais de Aquisição de Marketing</td><td>15/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Prova Social</td><td>Coleta e distribuição de depoimentos de alunos</td><td>01/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Assistente de IA</td><td>Implementação de Assistente de IA para Vendas e Retenção</td><td>15/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Análise de Preços</td><td>Análise da Estrutura de Preços</td><td>01/11/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Fluxo de Caixa</td><td>Planejamento do Fluxo de Caixa</td><td>15/11/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -493,14 +522,21 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação</h3>
                      <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>29/08/2025</td><td>Construção do Business Model Canvas</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>05/09/2025</td><td>Entrega de Áudios de Mapeamento de Processos</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>12/09/2025</td><td>Desenho do Organograma da Empresa</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>19/09/2025</td><td>Revisão do Plano de Cargos e Salários</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>19/09/2025</td><td>Extração de Relatórios do Sistema (curva ABC)</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>19/09/2025</td><td>Implementação do Programa 5S</td></tr>
+                            <tr><td>Business Model Canvas</td><td>Construção do Business Model Canvas</td><td>29/08/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Mapeamento de Processos</td><td>Entrega de Áudios de Mapeamento de Processos</td><td>05/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Organograma</td><td>Desenho do Organograma da Empresa</td><td>12/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Cargos e Salários</td><td>Revisão do Plano de Cargos e Salários</td><td>19/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Relatórios de Sistema</td><td>Extração de Relatórios do Sistema (curva ABC)</td><td>19/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Programa 5S</td><td>Implementação do Programa 5S</td><td>19/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -524,13 +560,20 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação</h3>
                     <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                             <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/09/2025</td><td>Sessões 1-2: Autoconhecimento e Autoconfiança</td></tr>
-                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Sessão 3: Comunicação Assertiva e Feedback</td></tr>
-                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Sessões 4-5: Gestão de Conflitos (Diagnóstico e Resolução)</td></tr>
-                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Sessão 6: Inteligência Emocional Aplicada</td></tr>
-                             <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/11/2025</td><td>Sessões 7-8: Gestão de Demandas Urgentes</td></tr>
+                             <tr><td>Autoconhecimento</td><td>Sessões 1-2: Autoconhecimento e Autoconfiança</td><td>01/09/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
+                             <tr><td>Comunicação</td><td>Sessão 3: Comunicação Assertiva e Feedback</td><td>15/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                             <tr><td>Gestão de Conflitos</td><td>Sessões 4-5: Gestão de Conflitos (Diagnóstico e Resolução)</td><td>01/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                             <tr><td>Inteligência Emocional</td><td>Sessão 6: Inteligência Emocional Aplicada</td><td>15/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                             <tr><td>Gestão de Demandas</td><td>Sessões 7-8: Gestão de Demandas Urgentes</td><td>01/11/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -553,16 +596,23 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação</h3>
                      <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Definição da Identidade e Missão</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Propostas de Valor (Pilares de Comunicação)</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Estrutura do Ecossistema (Jornada do Cliente CEO)</td></tr>
-                            <tr><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td><td>01/01/2025</td><td>Portfólio de Produtos e Serviços</td></tr>
-                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Escalar o programa de Conselheiros.</td></tr>
-                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Lançar cursos de especialistas.</td></tr>
-                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Expandir formações In-Company.</td></tr>
-                            <tr><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td><td>01/01/2025</td><td>Implementar automação para qualificação de leads.</td></tr>
+                            <tr><td>Identidade e Missão</td><td>Definição da Identidade e Missão</td><td>01/01/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Propostas de Valor</td><td>Propostas de Valor (Pilares de Comunicação)</td><td>01/01/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Estrutura do Ecossistema</td><td>Estrutura do Ecossistema (Jornada do Cliente CEO)</td><td>01/01/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Portfólio de Produtos</td><td>Portfólio de Produtos e Serviços</td><td>01/01/2025</td><td class="status-cell status-concluida"><span class="status-icon">✔</span> Concluída</td></tr>
+                            <tr><td>Programa de Conselheiros</td><td>Escalar o programa de Conselheiros.</td><td>01/01/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
+                            <tr><td>Cursos de Especialistas</td><td>Lançar cursos de especialistas.</td><td>01/01/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
+                            <tr><td>Formações In-Company</td><td>Expandir formações In-Company.</td><td>01/01/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
+                            <tr><td>Automação de Leads</td><td>Implementar automação para qualificação de leads.</td><td>01/01/2025</td><td class="status-cell status-atrasada"><span class="status-icon">⚠️</span> Atrasada</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -585,11 +635,18 @@
                 <div class="plano-de-acao">
                     <h3>Plano de Ação</h3>
                      <table class="plano-de-acao-table">
-                        <thead><tr><th class="status-cell">Status</th><th>Data Prevista</th><th>Descrição</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>Entregável</th>
+                                <th>Descrição</th>
+                                <th>Data Prevista</th>
+                                <th class="status-cell">Status</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/09/2025</td><td>Definir Estratégia Comercial</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>01/10/2025</td><td>Contratar Equipe de Prospecção</td></tr>
-                            <tr><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td><td>15/10/2025</td><td>Lançar Campanha para Turma 4</td></tr>
+                            <tr><td>Estratégia Comercial</td><td>Definir Estratégia Comercial</td><td>15/09/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Equipe de Prospecção</td><td>Contratar Equipe de Prospecção</td><td>01/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
+                            <tr><td>Campanha Turma 4</td><td>Lançar Campanha para Turma 4</td><td>15/10/2025</td><td class="status-cell status-em-andamento"><span class="status-icon">⚙️</span> Em Andamento</td></tr>
                         </tbody>
                     </table>
                 </div>
